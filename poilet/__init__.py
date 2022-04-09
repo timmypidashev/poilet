@@ -37,4 +37,12 @@ class PoiletError(Exception):
 
 
 def main():
-    print("Hello world!")
+    parser = argparse.ArgumentParser(
+        prog='poilet',
+        usage='%(prog)s [options]',
+        description='Python variant of The Other Implementation of figLET'
+    )
+    parser.add_argument(
+        '-v', '--version', required=False, help='output version information and exit', metavar=''
+    )
+    args = parser.parse_args()
