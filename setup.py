@@ -17,7 +17,7 @@ setup(
         'Discussions': 'https://github.com/timmypidashev/poilet/discussions',
         'Issues': 'https://github.com/timmypidashev/poilet/issues',
     },
-    version=version
+    version=version,
     packages=['poilet'],
     license='MIT',
     description='Python variant of The Other Implementation of figLET',
@@ -29,6 +29,6 @@ setup(
         'Intended Audience :: Developers',
         'Natural Language :: English',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 3.10
+        'Programming Language :: Python :: 3.10'
     ]
 )

@@ -24,4 +24,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+import argparse
+
 from .version import __version__
+
+class PoiletError(Exception):
+    def __init__(self, error):
+        self.error = error
+
+    def __str__(self):
+        return self.error
+
+
