@@ -6,8 +6,8 @@ with open('README.md') as file:
     readme = file.read()
 
 # Track version number
-with open(poilet/__init__.py) as file:
-    version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', file.read(), re.MULTILINE).group(1)
+with open('poilet/__init__.py') as file:
+    version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', file.read(), re.MULTILINE)
 
 setup(
     name='poilet',

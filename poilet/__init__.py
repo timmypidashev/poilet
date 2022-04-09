@@ -36,3 +36,5 @@ class PoiletError(Exception):
         return self.error
 
 
+def main():
+    print("Hello world!")
