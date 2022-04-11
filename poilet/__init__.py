@@ -861,15 +861,28 @@ class Poilet(object):
     def getFonts(self):
         return self.Font.getFonts()
 
-
 # argparse main output for command-line help
 def main():
     parser = argparse.ArgumentParser(
         prog='poilet',
-        usage='%(prog)s [options]',
+        usage='%(prog)s [options] [text..]',
         description='Python variant of The Other Implementation of figLET'
     )
     parser.add_argument(
-        '-v', '--version', required=False, help='output version information and exit', metavar=''
+            '-f', '--font', required=False, default=DEFAULT_FONT, help='font to render with (default: %(default)s)', metavar='FONT'
     )
-    args = parser.parse_args()
+    parser.add_argument(
+        '-v', '--version', required=False, help='output version information and exit', action='store_true'
+    )
+    args = parser.parse_args(args=None if sys.argv[1:] else ['--help'])
+
+    if args.version:
+        print(f'Poilet v{__version__}')
+        return 1
+
+    
+
+
+
+if __name__ == '__main__':
+    sys.exit(main())
