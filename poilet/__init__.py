@@ -42,6 +42,11 @@ import pkg_resources
 
 from .version import __version__
 
+if sys.platform == 'win32':
+    SHARED_DIRECTORY = os.path.join(os.environ["APPDATA"], "figlet")
+else:
+    SHARED_DIRECTORY = '/usr/local/share/figlet/'
+
 DEFAULT_FONT  = 'ascii9' # Default toilet font
 
 class PoiletError(Exception):
@@ -872,9 +877,16 @@ def main():
             '-f', '--font', required=False, default=DEFAULT_FONT, help='font to render with (default: %(default)s)', metavar='FONT'
     )
     parser.add_argument(
+            '-l', '--list_fonts', required=False, help='show installed fonts list', action='store_true'
+    )
+    parser.add_argument(
         '-v', '--version', required=False, help='output version information and exit', action='store_true'
     )
     args = parser.parse_args(args=None if sys.argv[1:] else ['--help'])
+
+    if args.list_fonts:
+        print('\n'.join(sorted(PoiletFont.getFonts())))
+        return 1
 
     if args.version:
         print(f'Poilet v{__version__}')
